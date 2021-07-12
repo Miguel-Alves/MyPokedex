@@ -77,3 +77,15 @@ export const AboutText = styled.Text`
   font-size: 18px;
   line-height: 20px;
 `;
+
+export const SwitchRightPokemon = styled.TouchableOpacity`
+  position: absolute;
+  right: 5%;
+  top: 30%;
+`;
+
+export const SwitchLeftPokemon = styled.TouchableOpacity`
+  position: absolute;
+  left: 5%;
+  top: 30%;
+`;

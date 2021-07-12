@@ -1,9 +1,15 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {Image} from 'react-native';
 
 import Header from '../../components/Header';
 import AppContext from '../../contexts/AppContext';
 import pokeballBackgroundImage from '../../assets/PokeballBackground.png';
+
+import PokemonInfo from '../../components/PokemonInfo';
+import PokemonStats from '../../components/PokemonStats';
+import arrowLeft from '../../assets/ArrowLeft.png';
+import arrowRight from '../../assets/ArrowRight.png';
 
 import {
   AboutText,
@@ -12,17 +18,18 @@ import {
   PokeballBackground,
   PokemonImage,
   PokemonInfoCard,
+  SwitchLeftPokemon,
+  SwitchRightPokemon,
   TypeCard,
   TypeCardText,
   TypeView,
 } from './styles';
-import PokemonInfo from '../../components/PokemonInfo';
-import PokemonStats from '../../components/PokemonStats';
 
 const PokemonScreen: React.FC = () => {
-  const [color, setColor] = useState('#000000');
-  const {pokemon, setPokemon} = useContext(AppContext);
   const navigation = useNavigation();
+  const [color, setColor] = useState('#000000');
+  const {pokemon, setPokemon, pokemonList, setPokemonList} =
+    useContext(AppContext);
 
   useEffect(() => {
     let cardColor = colorSelector(pokemon.types[0]);
@@ -36,6 +43,47 @@ const PokemonScreen: React.FC = () => {
   const handleRightButtonPress = () => {
     //does nothing cause, in this screen, it's only pokemon hash number
     return false;
+  };
+
+  const switchLeftPokemon = () => {
+    if (pokemon.id !== 1) {
+      return (
+        <SwitchLeftPokemon onPress={() => handlePreviousPokemon()}>
+          <Image source={arrowLeft} style={{height: 20, width: 14}} />
+        </SwitchLeftPokemon>
+      );
+    }
+    return;
+  };
+
+  const switchRightPokemon = () => {
+    if (pokemon.id !== 151) {
+      return (
+        <SwitchRightPokemon onPress={() => handleNextPokemon()}>
+          <Image source={arrowRight} style={{height: 20, width: 14}} />
+        </SwitchRightPokemon>
+      );
+    }
+    return;
+  };
+
+  async function handleNextPokemon() {
+    let nextPokemon = pokemonList.filter(function (otherPokemon) {
+      return otherPokemon.id === pokemon.id + 1;
+    });
+
+    console.log(nextPokemon);
+    //navigation.dispatch(StackActions.replace('PokemonScreen'));
+    //setPokemon(nextPokemon);
+  }
+
+  const handlePreviousPokemon = () => {
+    let previousPokemon = pokemonList.filter(function (otherPokemon) {
+      return otherPokemon.id === pokemon.id - 1;
+    });
+    console.log(previousPokemon);
+    //setPokemon(previousPokemon);
+    //setLoading(false);
   };
 
   const colorSelector = pokemonType => {
@@ -115,6 +163,8 @@ const PokemonScreen: React.FC = () => {
         rightButtonDisabled={true}
         rightButtonBehaviour={() => handleRightButtonPress()}
       />
+      {switchLeftPokemon()}
+      {switchRightPokemon()}
       <PokemonInfoCard>
         <PokemonImage source={{uri: `${pokemon.image}`}} />
         <TypeView>

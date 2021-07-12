@@ -9,8 +9,10 @@ import AppContext from './contexts/AppContext';
 
 const App: React.FC = () => {
   const [pokemon, setPokemon] = useState({});
+  const [pokemonList, setPokemonList] = useState([]);
   return (
-    <AppContext.Provider value={{pokemon, setPokemon}}>
+    <AppContext.Provider
+      value={{pokemon, setPokemon, pokemonList, setPokemonList}}>
       <NavigationContainer>
         <StatusBar barStyle="dark-content" hidden />
         <Routes />

@@ -14,12 +14,13 @@ import {Container, PokemonList, ActivityIndicator} from './styles';
 const HomeScreen: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [numberOrdered, setNumberOrdered] = useState(true);
-  const [pokemonList, setPokemonList] = useState([]);
   const [selectedList, setSelectedList] = useState(pokemonList);
   const [search, setSearch] = useState('');
   const navigation = useNavigation();
 
-  const {pokemon, setPokemon} = useContext(AppContext);
+  const {pokemon, setPokemon, pokemonList, setPokemonList} =
+    useContext(AppContext);
+  //const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
     setLoading(true);
