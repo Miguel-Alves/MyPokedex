@@ -36,7 +36,7 @@ export const PokemonHash = styled.Text`
   font-family: Poppins-Bold;
   font-style: normal;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 32px;
   color: #ffffff;
 `;

@@ -28,7 +28,7 @@ export const PokemonInfoCard = styled.View`
 
 export const PokemonImage = styled.Image`
   position: absolute;
-  width: 80%;
+  width: 70%;
   height: 55%;
   top: -40%;
 `;

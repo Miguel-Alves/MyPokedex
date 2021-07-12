@@ -17,6 +17,7 @@ import {
   TypeView,
 } from './styles';
 import PokemonInfo from '../../components/PokemonInfo';
+import PokemonStats from '../../components/PokemonStats';
 
 const PokemonScreen: React.FC = () => {
   const [color, setColor] = useState('#000000');
@@ -26,7 +27,6 @@ const PokemonScreen: React.FC = () => {
   useEffect(() => {
     let cardColor = colorSelector(pokemon.types[0]);
     setColor(cardColor);
-    console.log(pokemon);
   }, []);
 
   const handleBackButtonPress = () => {
@@ -131,13 +131,22 @@ const PokemonScreen: React.FC = () => {
           <AboutText style={{color: color}}>Sobre</AboutText>
         </AboutView>
         <PokemonInfo
-          weight={pokemon.weight}
-          height={pokemon.height}
+          weight={pokemon.weight / 10}
+          height={pokemon.height / 10}
           abilities={pokemon.abilities}
         />
         <AboutView>
           <AboutText style={{color: color}}>Status Base</AboutText>
         </AboutView>
+        <PokemonStats
+          color={color}
+          hpValue={pokemon.stats[0].base_stat}
+          atkValue={pokemon.stats[1].base_stat}
+          defValue={pokemon.stats[2].base_stat}
+          satkValue={pokemon.stats[3].base_stat}
+          sdefValue={pokemon.stats[4].base_stat}
+          spdValue={pokemon.stats[5].base_stat}
+        />
       </PokemonInfoCard>
     </Container>
   );

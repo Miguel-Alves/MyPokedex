@@ -15,8 +15,8 @@ import {
 } from './styles';
 
 interface PokemonInfoProps extends ViewProps {
-  weight: string;
-  height: string;
+  weight: number;
+  height: number;
   abilities: {}[];
 }
 
