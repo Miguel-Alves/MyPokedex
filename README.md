@@ -14,6 +14,7 @@ I changed some sizes in order for this app perform well in any kind of phone, ma
 ## Running
 In order to execute this program, you will need to:
 - Clone this repo
+
 Inside the folder, type these instructions:
 - yarn install
 - yarn start
