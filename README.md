@@ -8,7 +8,7 @@ I started this porject with a combination of good timing. While I already had th
 It has been a great and fun project until now and I learned a lot having such a good desgin prototype to follow. 
 I changed some sizes in order for this app perform well in any kind of phone, making it responsive. 
 
-##APK
+## APK
 - You can find an apk file [here](https://drive.google.com/file/d/1mnEjiPB9w63STWBeLWWC8td92w2KQL12/view?usp=sharing). 
 
 ## Running
